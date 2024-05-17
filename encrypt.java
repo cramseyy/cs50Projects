@@ -4,25 +4,32 @@ public class encrypt {
     public static void main(String[] args) {
 
         if (args.length == 1) {
-            for (int i = 0; i < args.length; i++) {
-                boolean digit = isDigit(args[i]);
-                if (!digit) {
-                    System.out.println("Usage: java key. Not number");
-                    System.exit(1);
-                } else {
-                    int num = Integer.parseInt(args[0]);
-                    Scanner ptInput = new Scanner(System.in);
-                    String pt = ptInput.next();
 
-                    System.out.println(rotate(pt,num));
+            boolean digit = isDigit(args[0]);
+            if (!digit) {
+                System.out.println("Usage: java key. Not number");
+                System.exit(1);
+            } else {
+                int num = Integer.parseInt(args[0]);
+                Scanner ptInput = new Scanner(System.in);
+                System.out.print("plaintext: ");
+                String pt = ptInput.next();
 
-                    System.out.println("Correct");
-                    System.exit(0);
+                char ct;
+                System.out.print("ciphertext: ");
+                for (int i = 0; i < pt.length(); i++) {
+                    ct = rotate(pt.charAt(i), num);
+                    System.out.print(ct);
                 }
-            }
+                System.out.println();
 
-        } else {
-            System.out.println("Usage: java key. Too many args");
+                ptInput.close();
+                System.exit(0);
+            }
+        }
+
+        else {
+            System.out.println("Usage: java key");
             System.exit(1);
         }
 
