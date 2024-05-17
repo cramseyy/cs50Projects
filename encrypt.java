@@ -12,10 +12,9 @@ public class encrypt {
                 } else {
                     int num = Integer.parseInt(args[0]);
                     Scanner ptInput = new Scanner(System.in);
-                    String pt = ptInput.nextLine();
-                    System.out.println(args[0]);
-                    
-                    System.out.println(rotate(pt.charAt(pt.length() - 1),5));
+                    String pt = ptInput.next();
+
+                    System.out.println(rotate(pt,num));
 
                     System.out.println("Correct");
                     System.exit(0);
